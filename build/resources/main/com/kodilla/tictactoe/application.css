@@ -1,0 +1,152 @@
+.root  {
+    -fx-background-image: url("background.jpg");
+    -fx-background-size: 960 540;
+}
+.table-view {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-background-color: #58427c;
+    -fx-text-fill: #FAF0E6;
+    -fx-font-weight: normal;
+    -fx-font-size: 20;
+}
+
+.table-view .cell  {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-text-fill: #FAF0E6;
+    -fx-font-size: 18;
+    -fx-alignment: center;
+}
+
+.playButton {
+    -fx-font-style: italic;
+    -fx-text-fill: #3498DB;
+    -fx-background-radius:0;
+    -fx-font-weight: bold;
+    -fx-border-width: 0 0 0 0;
+    -fx-font-size: 70 !important;
+}
+
+.highScore {
+    -fx-font-style: italic;
+    -fx-text-fill: #3498DB;
+    -fx-font-weight: bold;
+    -fx-border-width: 0 0 0 0;
+    -fx-font-size: 35 !important;
+}
+.exitButton {
+    -fx-font-style: italic;
+    -fx-text-fill: #E74C3C !important;
+    -fx-font-weight: bold;
+    -fx-border-width: 0 0 0 0;
+    -fx-font-size: 35 !important;
+}
+.info {
+    -fx-background-color: #808080 !important;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    -fx-border-width: 0 0 0 0;
+    -fx-border-radius: 80px;
+    -fx-text-fill: #FAF0E6 !important;
+}
+
+.go-and-return {
+    -fx-background-color: #006b3c !important;
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-border-width: 0 0 0 0;
+    -fx-border-radius: 80px;
+    -fx-text-fill: #FAF0E6;
+}
+
+.label {
+    -fx-text-fill: #DB7734;
+    -fx-font-size: 22;
+    -fx-font-weight: bold;
+    -fx-font-family: "Arial";
+}
+
+.nameLabel {
+    -fx-font-size: 25;
+
+}
+
+.resultLabel {
+    -fx-text-fill: #FAF0E6;
+    -fx-font-size: 28;
+    -fx-font-weight: bold;
+    -fx-font-family: "Arial";
+}
+.gameResult {
+    -fx-text-fill: #FAF0E6;
+    -fx-font-size: 35;
+    -fx-font-weight: bold;
+
+}
+
+.text-field {
+    -fx-background-color: #808080;
+    -fx-text-fill: white;
+
+}
+
+.rankingLabel {
+    -fx-text-fill: #DB7734;
+    -fx-font-size: 35;
+    fx-font-weight: bold;
+}
+
+.button {
+    -fx-background-color:transparent;
+    -fx-font-family: "Arial";
+    -fx-border-color: #FAF0E6;
+}
+
+.radio-button {
+    -fx-text-fill: #FAF0E6;
+}
+
+.button1  {
+    -fx-border-width: 0 2 2 0;
+    -fx-font-size: 40;
+}
+.button2 {
+    -fx-border-width: 0 2 2 0;
+    -fx-font-size: 40;
+}
+.button3 {
+    -fx-border-width: 0 0 2 0;
+    -fx-font-size: 40;
+}
+.button4 {
+    -fx-border-width: 0 2 2 0;
+    -fx-font-size: 40;
+}
+.button5 {
+    -fx-border-width: 0 2 2 0;
+    -fx-font-size: 40;
+}
+.button6 {
+    -fx-border-width: 0 0 2 0;
+    -fx-font-size: 40;
+}
+
+.button7 {
+    -fx-border-width: 0 2 0 0;
+    -fx-font-size: 40;
+}
+.button8 {
+    -fx-border-width: 0 2 0 0;
+    -fx-font-size: 40;
+}
+
+.button9 {
+    -fx-border-width: 0 0 0 0;
+    -fx-font-size: 40;
+}
+
+
+
