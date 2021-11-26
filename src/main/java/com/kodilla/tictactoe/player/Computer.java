@@ -1,5 +1,6 @@
 package com.kodilla.tictactoe.player;
 
+import static com.kodilla.tictactoe.enums.SignEnum.*;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 
@@ -35,10 +36,6 @@ public class Computer implements Serializable {
         this.sign = sign;
     }
 
-    public void setRandom(Random random) {
-        this.random = random;
-    }
-
     public void setScore(int score) {
         this.score = score;
     }
@@ -49,12 +46,13 @@ public class Computer implements Serializable {
 
     public void makeMove(List<Button> buttons) {
         List<Button> emptyButtons = buttons.stream().filter(b -> b.getText().isEmpty()).collect(Collectors.toList());
-        try {
+
+        if(emptyButtons.isEmpty()) {
+            System.out.println("Draw");
+            return;
+        }
             Button randomEmptyButton = emptyButtons.get(random.nextInt(emptyButtons.size()));
             randomEmptyButton.setText(sign);
-            randomEmptyButton.setTextFill(Color.web("#E74C3C"));
-        } catch (IllegalArgumentException e) {
-            System.out.println("Draw");
-        }
+            randomEmptyButton.setTextFill(Color.web(O.getColor()));
     }
 }

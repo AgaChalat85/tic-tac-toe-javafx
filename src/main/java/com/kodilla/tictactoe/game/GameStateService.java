@@ -1,20 +1,15 @@
 package com.kodilla.tictactoe.game;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.io.*;
-
 
 public class GameStateService {
 
-    private final static Logger LOGGER = LogManager.getLogger(GameStateService.class);
     private final static String GAME_STATE_FILE_PATH = "src/main/resources/com/kodilla/tictactoe/savedGame.txt";
     private final static String HIGH_SCORE_FILE_PATH = "src/main/resources/com/kodilla/tictactoe/highScore.txt";
 
     public boolean saveState(GameState gameState) {
 
-        try (FileOutputStream f = new FileOutputStream(new File(GAME_STATE_FILE_PATH));
+        try (FileOutputStream f = new FileOutputStream(GAME_STATE_FILE_PATH);
              ObjectOutputStream o = new ObjectOutputStream(f)) {
 
             o.writeObject(gameState);
@@ -29,7 +24,7 @@ public class GameStateService {
 
     public GameState readState() {
 
-        try (FileInputStream fi = new FileInputStream(new File(GAME_STATE_FILE_PATH));
+        try (FileInputStream fi = new FileInputStream(GAME_STATE_FILE_PATH);
              ObjectInputStream oi = new ObjectInputStream(fi)) {
 
             GameState gameState1 = (GameState) oi.readObject();
@@ -47,7 +42,7 @@ public class GameStateService {
 
     public boolean saveHighScore(HighScores highScores) {
 
-        try (FileOutputStream f = new FileOutputStream(new File(HIGH_SCORE_FILE_PATH));
+        try (FileOutputStream f = new FileOutputStream(HIGH_SCORE_FILE_PATH);
              ObjectOutputStream o = new ObjectOutputStream(f)) {
 
             o.writeObject(highScores);
@@ -62,7 +57,7 @@ public class GameStateService {
 
     public HighScores readHighScore() {
 
-        try (FileInputStream fi = new FileInputStream(new File(HIGH_SCORE_FILE_PATH));
+        try (FileInputStream fi = new FileInputStream(HIGH_SCORE_FILE_PATH);
              ObjectInputStream oi = new ObjectInputStream(fi)) {
 
             HighScores highScores = (HighScores) oi.readObject();

@@ -1,6 +1,7 @@
 package com.kodilla.tictactoe;
 
 import static com.kodilla.tictactoe.util.Dimensions.*;
+import static com.kodilla.tictactoe.enums.SignEnum.*;
 
 import com.kodilla.tictactoe.game.GameState;
 import com.kodilla.tictactoe.game.GameStateService;
@@ -17,7 +18,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.List;
@@ -25,11 +25,11 @@ import java.util.stream.Collectors;
 
 public class Game extends Application {
 
-    private List<Button> buttons;
     private BorderPane startRoot;
     private Pane root;
     private Pane rankingScene;
     private GridPane settingScene;
+    private List<Button> buttons;
     private Button playButton;
     private Button continueButton;
     private Button exitButton;
@@ -39,7 +39,7 @@ public class Game extends Application {
     private Button goButton;
     private Button restartButton;
     private Button playAgainButton;
-    private Button quitGameButton;
+    private Button endGameButton;
     private Button quitAndSaveButton;
     private RadioButton choiceSignX;
     private RadioButton choiceSignY;
@@ -77,19 +77,24 @@ public class Game extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        gameStateService = new GameStateService();
-        highScores = gameStateService.readHighScore();
-        gameState = gameStateService.readState();
+        readFromFiles();
         createGUI();
         setActions(stage);
         setCssStyles();
-        showStage(stage);
         setMediaPlayer();
         checkWinner = new CheckWinner(buttons);
+        showStage(stage);
     }
 
     public static void main(String[] args) {
         launch();
+    }
+
+    private void readFromFiles() {
+        gameStateService = new GameStateService();
+        highScores = gameStateService.readHighScore();
+        gameState = gameStateService.readState();
+
     }
 
     private void createGUI() {
@@ -113,7 +118,7 @@ public class Game extends Application {
         this.playAgainButton = GUICreator.createPlayAgainButton();
         this.restartButton = GUICreator.createRestartButton();
         this.quitAndSaveButton = GUICreator.createQuitAndSaveButton();
-        this.quitGameButton = GUICreator.createQuitGameButton();
+        this.endGameButton = GUICreator.createEndGameButton();
 
         //create label components
         this.labelForNameField = GUICreator.createLabelForPlayerNameField();
@@ -134,7 +139,7 @@ public class Game extends Application {
         this.scene3 = new Scene(root, GAME_WIDTH, GAME_HEIGHT);
         this.scene4 = new Scene(rankingScene, GAME_WIDTH, GAME_HEIGHT);
 
-        if(!gameState.isSaved()) {
+        if (!gameState.isSaved()) {
             this.continueButton.setDisable(true);
         }
         // create layout components
@@ -164,7 +169,7 @@ public class Game extends Application {
         this.rankingScene.getChildren().add(returnButton);
 
         // inject components to root
-        this.root.getChildren().addAll(playAgainButton, restartButton, quitAndSaveButton, quitGameButton, playerLabel, computerLabel,
+        this.root.getChildren().addAll(playAgainButton, restartButton, quitAndSaveButton, endGameButton, playerLabel, computerLabel,
                 drawLabel, playerResultLabel, computerResultLabel, drawResultLabel, gameResultLabel);
         this.buttons.forEach(root.getChildren()::add);
     }
@@ -174,7 +179,7 @@ public class Game extends Application {
         player.setName(playerNameField.getText());
         player.setSign(playerSign);
         player.setScore(0);
-        String computerSign = playerSign.equals("X") ? "O" : "X";
+        String computerSign = playerSign.equals(X.name()) ? O.name() : X.name();
         computer.setName("Computer");
         computer.setScore(0);
         computer.setSign(computerSign);
@@ -182,7 +187,7 @@ public class Game extends Application {
 
     private void setActions(Stage stage) {
         this.playButton.setOnAction(event -> stage.setScene(scene2));
-        this.continueButton.setOnAction(event-> {
+        this.continueButton.setOnAction(event -> {
             readGameState();
             stage.setScene(scene3);
         });
@@ -225,18 +230,18 @@ public class Game extends Application {
 
         this.quitAndSaveButton.setOnAction(event -> {
                     List<String> fieldValues = this.buttons.stream().map(button -> button.getText()).collect(Collectors.toList());
-                    GameState gameState = new GameState(player, computer, draw, fieldValues);
+                    gameState = new GameState(player, computer, draw, fieldValues);
                     boolean saved = gameStateService.saveState(gameState);
                     if (saved) {
-                        System.out.println("Gra zostala poprawnie zapisana");
+                        System.out.println("Game has been saved correctly");
                         System.exit(0);
                     } else {
-                        System.out.println("Podczas zapisywania gry wystapil problem");
+                        System.out.println("Game state was not saved correctly");
                     }
                 }
         );
 
-        this.quitGameButton.setOnAction(b -> {
+        this.endGameButton.setOnAction(b -> {
             PlayerScore playerScore = new PlayerScore(player);
             highScores.addScore(playerScore);
             gameStateService.saveHighScore(highScores);
@@ -292,7 +297,7 @@ public class Game extends Application {
 
     private void showStage(Stage stage) {
         stage.setResizable(false);
-        stage.initStyle(StageStyle.TRANSPARENT);
+        //stage.initStyle(StageStyle.TRANSPARENT);
         stage.setScene(scene);
         stage.show();
     }
@@ -331,14 +336,14 @@ public class Game extends Application {
             this.buttons.get(i).setText(buttonValue);
 
             if (!buttonValue.isEmpty()) {
-                String color = buttonValue.equals("X") ? "#3498DB" : "#E74C3C";
+                String color = buttonValue.equals(X.name()) ? X.getColor() : O.getColor();
                 this.buttons.get(i).setTextFill(Color.web(color));
             }
         }
 
-        if (checkWinner.checkIfXWins("X") || checkWinner.checkIfXWins("O")) {
+        if (checkWinner.checkIfXWins(X.name()) || checkWinner.checkIfXWins(O.name())) {
             buttons.forEach(b -> b.setDisable(true));
-        }
 
+        }
     }
 }

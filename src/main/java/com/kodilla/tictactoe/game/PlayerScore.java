@@ -27,17 +27,11 @@ public class PlayerScore implements Serializable, Comparable<PlayerScore> {
         return playerName;
     }
 
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
-    }
 
     public Integer getPlayerScore() {
         return playerScore;
     }
 
-    public void setPlayerScore(Integer playerScore) {
-        this.playerScore = playerScore;
-    }
 
     @Override
     public String toString() {
@@ -50,6 +44,10 @@ public class PlayerScore implements Serializable, Comparable<PlayerScore> {
 
     @Override
     public int compareTo(PlayerScore o) {
-        return -(Integer.compare(this.getPlayerScore(), o.getPlayerScore()));
+        int compareResult = -(Integer.compare(this.playerScore, o.playerScore));
+        if (compareResult == 0) {
+            compareResult = playerName.compareToIgnoreCase(o.playerName);
+        }
+        return compareResult;
     }
 }

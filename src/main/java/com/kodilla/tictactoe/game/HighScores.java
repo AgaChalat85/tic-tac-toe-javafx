@@ -1,6 +1,5 @@
 package com.kodilla.tictactoe.game;
 
-import com.kodilla.tictactoe.player.Player;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;

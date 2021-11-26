@@ -1,6 +1,7 @@
 package com.kodilla.tictactoe;
 
 import static com.kodilla.tictactoe.util.Dimensions.*;
+import static com.kodilla.tictactoe.enums.SignEnum.*;
 
 import com.kodilla.tictactoe.game.HighScores;
 import com.kodilla.tictactoe.game.PlayerScore;
@@ -164,14 +165,14 @@ public class GUICreator {
     }
 
     public static RadioButton createSelectButtonX() {
-        RadioButton buttonX = new RadioButton("X");
+        RadioButton buttonX = new RadioButton(X.name());
         buttonX.getStyleClass().add("radio-button");
 
         return buttonX;
     }
 
     public static RadioButton createSelectButtonY() {
-        RadioButton buttonY = new RadioButton("O");
+        RadioButton buttonY = new RadioButton(O.name());
         buttonY.getStyleClass().add("radio-button");
 
         return buttonY;
@@ -213,13 +214,13 @@ public class GUICreator {
         return quitAndSaveButton;
     }
 
-    public static Button createQuitGameButton() {
-        Button quitGameButton = new Button("End Game");
-        quitGameButton.getStyleClass().add("info");
-        quitGameButton.setLayoutX(750);
-        quitGameButton.setLayoutY(400);
-        quitGameButton.setPrefWidth(170);
-        return quitGameButton;
+    public static Button createEndGameButton() {
+        Button endGameButton = new Button("End Game");
+        endGameButton.getStyleClass().add("info");
+        endGameButton.setLayoutX(750);
+        endGameButton.setLayoutY(400);
+        endGameButton.setPrefWidth(170);
+        return endGameButton;
     }
 
 
