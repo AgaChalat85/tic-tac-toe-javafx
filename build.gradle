@@ -15,8 +15,8 @@ ext {
     junitVersion = '5.7.1'
 }
 
-sourceCompatibility = '17'
-targetCompatibility = '17'
+//sourceCompatibility = '17'
+//targetCompatibility = '17'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -44,3 +44,10 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
