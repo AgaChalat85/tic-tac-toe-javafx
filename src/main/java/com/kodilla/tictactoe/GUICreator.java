@@ -1,6 +1,7 @@
 package com.kodilla.tictactoe;
 
-import static com.kodilla.tictactoe.util.Dimensions.*;
+import static com.kodilla.tictactoe.util.DimensionsAndCoordinates.*;
+import static com.kodilla.tictactoe.util.Messages.*;
 import static com.kodilla.tictactoe.enums.SignEnum.*;
 
 import com.kodilla.tictactoe.game.HighScores;
@@ -34,43 +35,44 @@ public class GUICreator {
     }
 
     public static Button createPlayButton() {
-        Button playButton = new Button("Play");
+        Button playButton = new Button(PLAY_BUTTON);
         playButton.setLayoutX(50);
-        playButton.getStyleClass().add("playButton");
+        playButton.getStyleClass().add(PLAY_BUTTON_CSS);
 
         return playButton;
     }
 
     public static Button createContinueButton() {
-        Button continueButton = new Button("Continue");
-        continueButton.getStyleClass().add("highScore");
+        Button continueButton = new Button(CONTINUE_BUTTON);
+        continueButton.getStyleClass().add(CONTINUE_AND_HIGH_SCORE_BUTTON_CSS);
 
         return continueButton;
     }
 
     public static Button createHighScoresButton() {
-        Button highScores = new Button("High Scores");
-        highScores.getStyleClass().add("highScore");
+        Button highScores = new Button(HIGH_SCORE_BUTTON);
+        highScores.getStyleClass().add(CONTINUE_AND_HIGH_SCORE_BUTTON_CSS);
 
         return highScores;
     }
 
     public static Button createExitButton() {
-        Button exitButton = new Button("Exit");
-        exitButton.getStyleClass().add("exitButton");
+        Button exitButton = new Button(EXIT_BUTTON);
+        exitButton.getStyleClass().add(EXIT_BUTTON_CSS);
+
         return exitButton;
     }
 
     public static Label createGameNameLabel() {
-        Label gameNameLabel = new Label("Tic-Tac-Toe");
-        gameNameLabel.getStyleClass().add("nameLabel");
+        Label gameNameLabel = new Label(TIC_TAC_TOE_LABEL);
+        gameNameLabel.getStyleClass().add(TIC_TAC_TOE_LABEL_CSS);
 
         return gameNameLabel;
     }
 
     public static Button createInfoButton() {
-        Button infoButton = new Button("Info");
-        infoButton.getStyleClass().add("info");
+        Button infoButton = new Button(INFO_BUTTON);
+        infoButton.getStyleClass().add(BUTTON_CSS_V2);
 
         return infoButton;
     }
@@ -96,26 +98,26 @@ public class GUICreator {
 
     public static Pane createRankingScene(HighScores highScores) {
         Pane rankingScene = new Pane();
-        Label rankingLabel = new Label("Top Ten Players");
+        Label rankingLabel = new Label(RANKING_LABEL);
         rankingLabel.setLayoutX(315);
         rankingLabel.setLayoutY(20);
-        rankingLabel.getStyleClass().add("rankingLabel");
+        rankingLabel.getStyleClass().add(RANKING_LABEL_CSS);
 
         TableView<PlayerScore> rankList = new TableView<>();
         rankList.setLayoutX(150);
         rankList.setLayoutY(80);
 
-        TableColumn<PlayerScore, String> rankCol = new TableColumn<>("RANK");
-        TableColumn<PlayerScore, String> playerNameCol = new TableColumn<>("PLAYER NAME");
-        TableColumn<PlayerScore, String> scoreCol = new TableColumn<>("SCORE");
+        TableColumn<PlayerScore, String> rankCol = new TableColumn<>(COLUMN_RANK);
+        TableColumn<PlayerScore, String> playerNameCol = new TableColumn<>(COLUMN_PLAYER_NAME);
+        TableColumn<PlayerScore, String> scoreCol = new TableColumn<>(COLUMN_SCORE);
 
-        rankCol.setPrefWidth(150);
+        rankCol.setPrefWidth(TABLE_COLUMN_WIDTH);
         rankCol.setSortable(false);
         rankCol.setResizable(false);
         playerNameCol.setPrefWidth(300);
         playerNameCol.setResizable(false);
         playerNameCol.setSortable(false);
-        scoreCol.setPrefWidth(150);
+        scoreCol.setPrefWidth(TABLE_COLUMN_WIDTH);
         scoreCol.setResizable(false);
         scoreCol.setSortable(false);
 
@@ -131,8 +133,8 @@ public class GUICreator {
     }
 
     public static Button createReturnButton() {
-        Button returnButton = new Button("Return");
-        returnButton.getStyleClass().add("go-and-return");
+        Button returnButton = new Button(RETURN_BUTTON);
+        returnButton.getStyleClass().add(GO_AND_RETURN_BUTTON_CSS);
         returnButton.setLayoutX(410);
         returnButton.setLayoutY(480);
         return returnButton;
@@ -147,106 +149,106 @@ public class GUICreator {
     }
 
     public static Label createLabelForPlayerNameField() {
-        Label labelForPlayerNameField = new Label("Please enter your name:");
+        Label labelForPlayerNameField = new Label(ENTER_NAME_LABEL);
         return labelForPlayerNameField;
     }
 
     public static TextField createNameField() {
         TextField nameField = new TextField();
-        nameField.getStyleClass().add("info");
-        nameField.setPrefColumnCount(2);
+        nameField.getStyleClass().add(BUTTON_CSS_V2);
+
         return nameField;
     }
 
     public static Label createSelectSignLabel() {
-        Label selectSignLabel = new Label("Please choice your sign: ");
+        Label selectSignLabel = new Label(SELECT_SIGN_LABEL);
         return selectSignLabel;
 
     }
 
     public static RadioButton createSelectButtonX() {
         RadioButton buttonX = new RadioButton(X.name());
-        buttonX.getStyleClass().add("radio-button");
+        buttonX.getStyleClass().add(RADIO_BUTTON_CSS);
 
         return buttonX;
     }
 
     public static RadioButton createSelectButtonY() {
         RadioButton buttonY = new RadioButton(O.name());
-        buttonY.getStyleClass().add("radio-button");
+        buttonY.getStyleClass().add(RADIO_BUTTON_CSS);
 
         return buttonY;
     }
 
     public static Button createGoButton() {
-        Button goButton = new Button("Go");
-        goButton.getStyleClass().add("go-and-return");
+        Button goButton = new Button(GO_BUTTON);
+        goButton.getStyleClass().add(GO_AND_RETURN_BUTTON_CSS);
         goButton.setPrefSize(60, 30);
         return goButton;
     }
 
     public static Button createPlayAgainButton() {
-        Button playAgainButton = new Button("Play Again");
-        playAgainButton.getStyleClass().add("info");
-        playAgainButton.setLayoutX(750);
+        Button playAgainButton = new Button(PLAY_AGAIN_BUTTON);
+        playAgainButton.getStyleClass().add(BUTTON_CSS_V2);
+        playAgainButton.setLayoutX(BUTTON_SCENE3_LAYOUT_X);
         playAgainButton.setLayoutY(100);
-        playAgainButton.setPrefWidth(170);
+        playAgainButton.setPrefWidth(BUTTON_WIDTH);
 
         return playAgainButton;
     }
 
     public static Button createRestartButton() {
-        Button restartButton = new Button("Restart");
-        restartButton.getStyleClass().add("info");
-        restartButton.setLayoutX(750);
+        Button restartButton = new Button(RESTART_BUTTON);
+        restartButton.getStyleClass().add(BUTTON_CSS_V2);
+        restartButton.setLayoutX(BUTTON_SCENE3_LAYOUT_X);
         restartButton.setLayoutY(200);
-        restartButton.setPrefWidth(170);
+        restartButton.setPrefWidth(BUTTON_WIDTH);
 
         return restartButton;
     }
 
     public static Button createQuitAndSaveButton() {
-        Button quitAndSaveButton = new Button("Save and Quit Game");
-        quitAndSaveButton.getStyleClass().add("info");
-        quitAndSaveButton.setLayoutX(750);
+        Button quitAndSaveButton = new Button(SAVE_AND_QUIT_BUTTON);
+        quitAndSaveButton.getStyleClass().add(BUTTON_CSS_V2);
+        quitAndSaveButton.setLayoutX(BUTTON_SCENE3_LAYOUT_X);
         quitAndSaveButton.setLayoutY(300);
-        quitAndSaveButton.setPrefWidth(170);
+        quitAndSaveButton.setPrefWidth(BUTTON_WIDTH);
         return quitAndSaveButton;
     }
 
     public static Button createEndGameButton() {
-        Button endGameButton = new Button("End Game");
-        endGameButton.getStyleClass().add("info");
-        endGameButton.setLayoutX(750);
+        Button endGameButton = new Button(END_BUTTON);
+        endGameButton.getStyleClass().add(BUTTON_CSS_V2);
+        endGameButton.setLayoutX(BUTTON_SCENE3_LAYOUT_X);
         endGameButton.setLayoutY(400);
-        endGameButton.setPrefWidth(170);
+        endGameButton.setPrefWidth(BUTTON_WIDTH);
         return endGameButton;
     }
 
 
     public static Label createPlayerLabel() {
-        Label playerLabel = new Label("Player");
+        Label playerLabel = new Label(PLAYER_LABEL);
         playerLabel.setLayoutX(240);
-        playerLabel.setLayoutY(465);
-        playerLabel.getStyleClass().add("label");
+        playerLabel.setLayoutY(LABEL_LAYOUT_Y);
+        playerLabel.getStyleClass().add(LABEL_CSS);
 
         return playerLabel;
     }
 
     public static Label createComputerLabel() {
-        Label computerLabel = new Label("Computer");
+        Label computerLabel = new Label(COMPUTER_LABEL);
         computerLabel.setLayoutX(530);
-        computerLabel.setLayoutY(465);
-        computerLabel.getStyleClass().add("label");
+        computerLabel.setLayoutY(LABEL_LAYOUT_Y);
+        computerLabel.getStyleClass().add(LABEL_CSS);
 
         return computerLabel;
     }
 
     public static Label createDrawLabel() {
-        Label drawLabel = new Label("Draw");
+        Label drawLabel = new Label(DRAW_LABEL);
         drawLabel.setLayoutX(405);
-        drawLabel.setLayoutY(465);
-        drawLabel.getStyleClass().add("label");
+        drawLabel.setLayoutY(LABEL_LAYOUT_Y);
+        drawLabel.getStyleClass().add(LABEL_CSS);
 
         return drawLabel;
     }
@@ -254,8 +256,8 @@ public class GUICreator {
     public static Label createPlayerResultLabel() {
         Label playerResultLabel = new Label(String.valueOf(0));
         playerResultLabel.setLayoutX(270);
-        playerResultLabel.setLayoutY(495);
-        playerResultLabel.getStyleClass().add("resultLabel");
+        playerResultLabel.setLayoutY(RESULT_LABEL_LAYOUT_Y);
+        playerResultLabel.getStyleClass().add(RESULT_LABEL_CSS);
 
         return playerResultLabel;
 
@@ -264,8 +266,8 @@ public class GUICreator {
     public static Label createComputerResultLabel() {
         Label computerResultLabel = new Label(String.valueOf(0));
         computerResultLabel.setLayoutX(588);
-        computerResultLabel.setLayoutY(495);
-        computerResultLabel.getStyleClass().add("resultLabel");
+        computerResultLabel.setLayoutY(RESULT_LABEL_LAYOUT_Y);
+        computerResultLabel.getStyleClass().add(RESULT_LABEL_CSS);
 
         return computerResultLabel;
 
@@ -274,8 +276,8 @@ public class GUICreator {
     public static Label createDrawResultLabel() {
         Label drawResultLabel = new Label(String.valueOf(0));
         drawResultLabel.setLayoutX(430);
-        drawResultLabel.setLayoutY(495);
-        drawResultLabel.getStyleClass().add("resultLabel");
+        drawResultLabel.setLayoutY(RESULT_LABEL_LAYOUT_Y);
+        drawResultLabel.getStyleClass().add(RESULT_LABEL_CSS);
 
         return drawResultLabel;
 
@@ -285,7 +287,7 @@ public class GUICreator {
         Label gameResult = new Label();
         gameResult.setLayoutX(330);
         gameResult.setLayoutY(20);
-        gameResult.getStyleClass().add("gameResult");
+        gameResult.getStyleClass().add(GAME_RESULT_LABEL_CSS);
 
         return gameResult;
     }
@@ -303,7 +305,7 @@ public class GUICreator {
                 button.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
                 button.setLayoutX(x);
                 button.setLayoutY(y);
-                button.getStyleClass().add("button" + style);
+                button.getStyleClass().add(BUTTON_CSS + style);
                 buttons.add(button);
                 style++;
                 x += BUTTON_SIZE;

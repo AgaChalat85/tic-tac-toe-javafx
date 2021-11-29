@@ -1,4 +1,4 @@
-.root  {
+.root {
     -fx-background-image: url("background.jpg");
     -fx-background-size: 960 540;
 }
@@ -44,7 +44,7 @@
     -fx-border-width: 0 0 0 0;
     -fx-font-size: 35 !important;
 }
-.info {
+.buttonV2 {
     -fx-background-color: #808080 !important;
     -fx-font-size: 15;
     -fx-font-weight: bold;

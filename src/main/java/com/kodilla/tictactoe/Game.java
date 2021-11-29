@@ -1,6 +1,7 @@
 package com.kodilla.tictactoe;
 
-import static com.kodilla.tictactoe.util.Dimensions.*;
+import static com.kodilla.tictactoe.util.DimensionsAndCoordinates.*;
+import static com.kodilla.tictactoe.util.Messages.*;
 import static com.kodilla.tictactoe.enums.SignEnum.*;
 
 import com.kodilla.tictactoe.game.GameState;
@@ -193,7 +194,7 @@ public class Game extends Application {
             stage.setScene(scene3);
         });
         this.exitButton.setOnAction(event -> System.exit(0));
-        this.infoButton.setOnAction(event -> getHostServices().showDocument("https://en.wikipedia.org/wiki/Tic-tac-toe"));
+        this.infoButton.setOnAction(event -> getHostServices().showDocument(WIKI_TIC_TAC_TOE));
         this.highScoresButton.setOnAction(event -> stage.setScene(scene4));
         this.returnButton.setOnAction(event -> stage.setScene(scene));
         this.goButton.setOnAction(event -> {
@@ -216,11 +217,11 @@ public class Game extends Application {
             for (Button button : this.buttons) {
                 button.setDisable(false);
                 button.setText("");
-                playerResultLabel.setText("0");
+                playerResultLabel.setText(ZERO);
                 player.setScore(0);
-                drawResultLabel.setText("0");
+                drawResultLabel.setText(ZERO);
                 draw = 0;
-                computerResultLabel.setText("0");
+                computerResultLabel.setText(ZERO);
                 computer.setScore(0);
                 gameResultLabel.setText("");
                 mediaPlayer1.stop();
@@ -234,10 +235,10 @@ public class Game extends Application {
                     gameState = new GameState(player, computer, draw, fieldValues);
                     boolean saved = gameStateService.saveState(gameState);
                     if (saved) {
-                        System.out.println("Game has been saved correctly");
+                        System.out.println(GAME_SAVED_SUCCESSFULLY);
                         System.exit(0);
                     } else {
-                        System.out.println("Game state was not saved correctly");
+                        System.out.println(GAME_SAVED_UNSUCCESSFULLY);
                     }
                 }
         );
@@ -260,7 +261,7 @@ public class Game extends Application {
                     if (checkWinner.checkIfXWins(player.getSign())) {
                         player.incrementScore();
                         playerResultLabel.setText(String.valueOf(player.getScore()));
-                        gameResultLabel.setText("Player won !");
+                        gameResultLabel.setText(PLAYER_WINS);
                         mediaPlayer1.play();
                         buttons.forEach(b -> b.setDisable(true));
 
@@ -270,14 +271,14 @@ public class Game extends Application {
                         if (checkWinner.checkIfXWins(computer.getSign())) {
                             computer.incrementScore();
                             computerResultLabel.setText(String.valueOf(computer.getScore()));
-                            gameResultLabel.setText(computer.getName() + " won !");
+                            gameResultLabel.setText(COMPUTER_WINS);
                             mediaPlayer2.play();
                             buttons.forEach(b -> b.setDisable(true));
 
                         } else if (checkWinner.checkIfDraw(buttons)) {
                             draw++;
                             drawResultLabel.setText(String.valueOf(draw));
-                            gameResultLabel.setText("      Draw !    ");
+                            gameResultLabel.setText(DRAW);
                             mediaPlayer3.play();
                             buttons.forEach(b -> b.setDisable(true));
                         }
@@ -292,7 +293,7 @@ public class Game extends Application {
         this.scene2.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         this.scene3.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         this.scene4.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-        this.startRoot.getStyleClass().add("startRoot");
+        //this.startRoot.getStyleClass().add("startRoot");
 
     }
 
