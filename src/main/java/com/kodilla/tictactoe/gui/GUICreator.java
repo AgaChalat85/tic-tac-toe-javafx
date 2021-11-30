@@ -1,8 +1,4 @@
-package com.kodilla.tictactoe;
-
-import static com.kodilla.tictactoe.util.DimensionsAndCoordinates.*;
-import static com.kodilla.tictactoe.util.Messages.*;
-import static com.kodilla.tictactoe.enums.SignEnum.*;
+package com.kodilla.tictactoe.gui;
 
 import com.kodilla.tictactoe.game.HighScores;
 import com.kodilla.tictactoe.game.PlayerScore;
@@ -19,12 +15,17 @@ import javafx.scene.layout.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.kodilla.tictactoe.enums.SignEnum.O;
+import static com.kodilla.tictactoe.enums.SignEnum.X;
+import static com.kodilla.tictactoe.util.DimensionsAndCoordinates.*;
+import static com.kodilla.tictactoe.util.Messages.*;
+
 public class GUICreator {
 
     public static BorderPane createStartScene() {
         BorderPane startRoot = new BorderPane();
         Label label = new Label();
-        Image image = new Image(GUICreator.class.getResourceAsStream("start-scene-image.png"));
+        Image image = new Image(GUICreator.class.getResourceAsStream("/com/kodilla/tictactoe/start-scene-image.png"));
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(580);
         imageView.setFitHeight(490);

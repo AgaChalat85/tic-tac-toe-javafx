@@ -8,6 +8,7 @@ import com.kodilla.tictactoe.game.GameState;
 import com.kodilla.tictactoe.game.GameStateService;
 import com.kodilla.tictactoe.game.HighScores;
 import com.kodilla.tictactoe.game.PlayerScore;
+import com.kodilla.tictactoe.gui.GUICreator;
 import com.kodilla.tictactoe.player.Computer;
 import com.kodilla.tictactoe.player.Player;
 import com.kodilla.tictactoe.result.CheckWinner;

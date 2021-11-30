@@ -8,4 +8,6 @@ module com.kodilla.tictactoe {
 
     opens com.kodilla.tictactoe.game to javafx.fxml, javafx.base;
     exports com.kodilla.tictactoe;
+
+
 }
